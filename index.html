@@ -1,7 +1,8 @@
 ---
 layout: default
-home-title: H2O Theme For Jekyll
-description: 或许是最漂亮的Jekyll主题
+home-title: Never Give Up
+description: 永不言弃
+header-img: /assets/img/header.jpg
 ---
 
 {% include header.html %}
@@ -11,8 +12,8 @@ description: 或许是最漂亮的Jekyll主题
     data-theme="{{ site.theme-color }}"
     style="{% if page.header-img %}background: url({{ page.header-img | relative_url }}) no-repeat center center; background-size: cover;{% endif %}"
 >
-    <h2>{{ page.home-title }}</h2>
-    <h3>{{ page.description }}</h3>
+    <h2 style="color:#20ABFF">{{ page.home-title }}</h2>
+    <h3 style="color:#20ABFF">{{ page.description }}</h3>
 </div>
 
 <main class="g-container home-content">
@@ -77,8 +78,22 @@ description: 或许是最漂亮的Jekyll主题
                 {% endif %}
             </section>
 
+            {% if site.friend.size > 0 %}
+            <section class="tags-card">
+                <div style="margin-bottom:8px">
+                    <p>Friends</p>
+                </div>
+                {% for f in site.friend %}
+                    <a href="{{ f[1] }}" class="tag">{{ f[0]}}</a>
+                {% endfor %}
+            </section>
+            {% endif %}
+
             {% if site.recommend-tags and site.tags.size>0 %}
             <section class="tags-card">
+                <div style="margin-bottom:8px">
+                    <p>Tags</p>
+                </div>
                 {% for tag in site.tags %}
                     {% if forloop.index > site.recommend-condition-size %}
                         {% break %}
